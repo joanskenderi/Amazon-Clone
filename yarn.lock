@@ -634,10 +634,10 @@
   "resolved" "https://registry.npmjs.org/@sqltools/formatter/-/formatter-1.2.5.tgz"
   "version" "1.2.5"
 
-"@stripe/stripe-js@^1.15.1":
-  "integrity" "sha512-ZaQpZo5PRv/mN6157OywMW4fc7FIS+eI/tS12I1gU9MdvnL8fzFktuAU/g9FyUOL22E4t9hF1tsfLQAZcQDokQ=="
-  "resolved" "https://registry.npmjs.org/@stripe/stripe-js/-/stripe-js-1.42.0.tgz"
-  "version" "1.42.0"
+"@stripe/stripe-js@^1.42.1":
+  "integrity" "sha512-5H7P7rVNDMdiJCUKsKXRUyr6IjZ4/9f8FB62NCa5O4rDftRfs4u2dPjjHs/tIs4OLeBB6oSzJIkE7cPr4ykPHg=="
+  "resolved" "https://registry.npmjs.org/@stripe/stripe-js/-/stripe-js-1.42.1.tgz"
+  "version" "1.42.1"
 
 "@tailwindcss/line-clamp@^0.2.0":
   "integrity" "sha512-+jXSdRK3/9V/BCPCr+iNpMMhxWMMv62vn/AS2b3/ClmueGuhCijW3bUwO1IiHnE7uCaF74Sli8jUCv9djwvpLg=="
@@ -902,7 +902,7 @@
   dependencies:
     "array-filter" "^1.0.0"
 
-"axios@^0.21.1":
+"axios@^0.21.4":
   "integrity" "sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg=="
   "resolved" "https://registry.npmjs.org/axios/-/axios-0.21.4.tgz"
   "version" "0.21.4"
@@ -3709,7 +3709,7 @@
   dependencies:
     "ansi-regex" "^5.0.1"
 
-"stripe@^8.157.0":
+"stripe@^8.222.0":
   "integrity" "sha512-hrA79fjmN2Eb6K3kxkDzU4ODeVGGjXQsuVaAPSUro6I9MM3X+BvIsVqdphm3BXWfimAGFvUqWtPtHy25mICY1w=="
   "resolved" "https://registry.npmjs.org/stripe/-/stripe-8.222.0.tgz"
   "version" "8.222.0"

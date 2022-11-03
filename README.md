@@ -1,5 +1,3 @@
-// remove secret keys @ .env.local
-
 Run commands
 
 1. `npm install`
