@@ -1,4 +1,6 @@
-Run commands
+# Amazon Clone
+
+Run commands:
 
 1. `npm install`
 

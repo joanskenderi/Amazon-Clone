@@ -1,9 +1,9 @@
 import { buffer } from "micro";
 import * as admin from "firebase-admin";
-import { session } from "next-auth/client";
 
 // Secure a connection to Firebase from the backend
 const serviceAccount = require("../../../permissions.json");
+
 const app = !admin.apps.length
   ? admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
@@ -12,7 +12,6 @@ const app = !admin.apps.length
 
 // Establish connection to Stripe
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-
 const endpointSecret = process.env.STRIPE_SIGNING_SECRET;
 
 const fulfillOrder = async (session) => {
@@ -32,7 +31,8 @@ const fulfillOrder = async (session) => {
       console.log(
         `SUCCESS: Order ${session.id} has been added to the database.`
       );
-    });
+    })
+    .catch((err) => console.log("Error", err.message));
 };
 
 export default async (req, res) => {
@@ -41,8 +41,8 @@ export default async (req, res) => {
     const payload = requestBuffer.toString;
     const sig = req.headers["stripe-signature"];
 
-    let event;
     // Verify that the event posted came from Stripe
+    let event;
     try {
       event = stripe.webhooks.constructEvent(payload, sig, endpointSecret);
     } catch (err) {
