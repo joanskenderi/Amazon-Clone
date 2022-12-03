@@ -10,7 +10,7 @@ import {
 } from "@heroicons/react/outline";
 import { selectItems } from "../slices/basketSlice";
 
-const Header = (props) => {
+const Header = () => {
   const [session] = useSession();
   const router = useRouter();
   const items = useSelector(selectItems);
@@ -36,7 +36,6 @@ const Header = (props) => {
           <input
             className="p-2 h-full w-6 flex-grow flex-shrink rounded-l-md focus:outline-none px-4"
             type="text"
-            placeholder={router.route === "/" ? "Search in products..." : ""}
           />
           <SearchIcon className="h-12 p-4" />
         </div>
@@ -47,18 +46,18 @@ const Header = (props) => {
             className="cursor-pointer link"
             onClick={!session ? signIn : signOut}
           >
-            <p>{session ? `Hello, ${session.user.name}` : "Sign In"}</p>
+            <p className="hover:underline">
+              {session ? `Hello, ${session.user.name}!` : "Sign In"}
+            </p>
             <p className="font-extrabold md:text-sm">Account & Lists</p>
           </div>
-
           <div
             className="cursor-pointer link"
-            onClick={() => router.push("/orders")}
+            onClick={() => session && router.push("/orders")}
           >
             <p>Returns</p>
             <p className="font-extrabold md:text-sm">& Orders</p>
           </div>
-
           <div
             className="relative link flex items-center cursor-pointer"
             onClick={() => router.push("/checkout")}

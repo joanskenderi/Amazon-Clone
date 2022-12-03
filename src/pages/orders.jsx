@@ -1,10 +1,11 @@
 import React from "react";
 import moment from "moment";
 import { getSession, useSession } from "next-auth/client";
+import db from "../../firebase";
 import Header from "../components/Header";
-import { db } from "../../firebase";
+import Order from "../components/Order";
 
-const Orders = () => {
+const Orders = ({ orders }) => {
   const [session] = useSession();
 
   return (
@@ -15,11 +16,25 @@ const Orders = () => {
           Your Orders
         </h1>
         {session ? (
-          <h2>x Orders</h2>
+          <h2>{orders?.length} orders</h2>
         ) : (
-          <h2>Please sign in to see your orders.</h2>
+          <h2>Please sign in to see your orders</h2>
         )}
-        <div className="mt-5 space-y-4"></div>
+        <div className="mt-5 space-y-4">
+          {orders?.map(
+            ({ id, amount, amountShipping, items, timestamp, images }) => (
+              <Order
+                key={id}
+                id={id}
+                amount={amount}
+                amountShipping={amountShipping}
+                items={items}
+                timestamp={timestamp}
+                images={images}
+              />
+            )
+          )}
+        </div>
       </main>
     </div>
   );
@@ -30,7 +45,7 @@ export default Orders;
 export const getServerSideProps = async (context) => {
   const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-  // Get the users logged in credentials
+  // Get the logged in user credentials
   const session = getSession(context);
 
   if (!session) {
@@ -39,7 +54,7 @@ export const getServerSideProps = async (context) => {
     };
   }
 
-  // Orders from the Firebase db
+  // Orders from the Firebase
   const stripeOrders = await db
     .collection("users")
     .doc(session.user.email)
@@ -56,9 +71,7 @@ export const getServerSideProps = async (context) => {
       images: order.data().images,
       timestamp: moment(order.data().timestamp.toDate()).unix(),
       items: (
-        await stripe.checkout.sessions.listLineItems(order.id, {
-          limit: 100,
-        })
+        await stripe.checkout.sessions.listLineItems(order.id, { limit: 100 })
       ).data,
     }))
   );

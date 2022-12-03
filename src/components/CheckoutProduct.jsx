@@ -19,17 +19,18 @@ const CheckoutProduct = ({
 
   // Push item into Redux
   const addItemToBasket = () => {
-    const product = {
-      id,
-      title,
-      price,
-      description,
-      category,
-      image,
-      rating,
-      hasPrime,
-    };
-    dispatch(addToBasket(product));
+    dispatch(
+      addToBasket({
+        id,
+        title,
+        price,
+        rating,
+        description,
+        category,
+        image,
+        hasPrime,
+      })
+    );
   };
 
   // Remove item from Redux
@@ -59,7 +60,6 @@ const CheckoutProduct = ({
               src="https://links.papareact.com/fdw"
               alt="Prime logo"
               className="w-12"
-              loading="lazy"
             />
             <p className="text-xs text-gray-500">FREE Next-day Delivery</p>
           </div>

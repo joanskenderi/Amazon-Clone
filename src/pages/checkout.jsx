@@ -71,7 +71,7 @@ const Checkout = () => {
         </div>
 
         {/* Right side */}
-        <div className="flex flex-col bg-white p-10 shadow-md">
+        <div className="flex flex-col bg-white p-10 shadow-sm">
           {items.length > 0 && (
             <>
               <h2 className="whitespace-nowrap">
@@ -89,7 +89,7 @@ const Checkout = () => {
                 disabled={!session}
                 onClick={createCheckoutSession}
               >
-                {!session ? "Sign in to checkout" : "Proceed to checkout"}
+                {!session ? "Sign In to Checkout" : "Proceed to Checkout"}
               </button>
             </>
           )}

@@ -32,17 +32,18 @@ const fulfillOrder = async (session) => {
         `SUCCESS: Order ${session.id} has been added to the database.`
       );
     })
-    .catch((err) => console.log("Error", err.message));
+    .catch(console.log);
 };
 
 export default async (req, res) => {
   if (req.method === "POST") {
     const requestBuffer = await buffer(req);
-    const payload = requestBuffer.toString;
+    const payload = requestBuffer.toString();
     const sig = req.headers["stripe-signature"];
 
-    // Verify that the event posted came from Stripe
     let event;
+
+    // Verify that the event posted came from Stripe
     try {
       event = stripe.webhooks.constructEvent(payload, sig, endpointSecret);
     } catch (err) {

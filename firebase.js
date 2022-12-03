@@ -1,12 +1,12 @@
 import firebase from "firebase";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDIXFx1wUMH9rQoqHiTLF0A3hY1RudfdSk",
-  authDomain: "clone-c61d1.firebaseapp.com",
-  projectId: "clone-c61d1",
-  storageBucket: "clone-c61d1.appspot.com",
-  messagingSenderId: "938842022377",
-  appId: "1:938842022377:web:c2362aa8a165b5ae90ab78",
+  apiKey: "AIzaSyDW9Eqgoc3aLndbqLNFRUWQ2E7ghwsvuCc",
+  authDomain: "clone-1e175.firebaseapp.com",
+  projectId: "clone-1e175",
+  storageBucket: "clone-1e175.appspot.com",
+  messagingSenderId: "788436343457",
+  appId: "1:788436343457:web:0b880ad355d0d640c26ee0",
 };
 
 const app = !firebase.apps.length

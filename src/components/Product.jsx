@@ -15,19 +15,20 @@ const Product = ({ id, title, price, description, category, image }) => {
   );
   const [hasPrime] = useState(Math.random() < 0.5);
 
-  // Send the product as an action to the Redux store
+  // Send the product to the Redux store
   const addItemToBasket = () => {
-    const product = {
-      id,
-      title,
-      price,
-      rating,
-      description,
-      category,
-      image,
-      hasPrime,
-    };
-    dispatch(addToBasket(product));
+    dispatch(
+      addToBasket({
+        id,
+        title,
+        price,
+        rating,
+        description,
+        category,
+        image,
+        hasPrime,
+      })
+    );
   };
 
   return (
@@ -41,7 +42,7 @@ const Product = ({ id, title, price, description, category, image }) => {
         {Array(rating)
           .fill()
           .map((_, i) => (
-            <StarIcon className="h-5 text-yellow-500" />
+            <StarIcon key={i} className="h-5 text-yellow-500" />
           ))}
       </div>
       <p className="text-xs my-2 line-clamp-2">{description}</p>
